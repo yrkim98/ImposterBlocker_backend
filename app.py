@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 # import matlab.engine
 from PIL import Image
 from html_and_url.classifier import get_html_url_score
-
+from screenshot import get_screenshot, string_to_image
 # You might want to install matlab engine for python
 # 1) install matlab
 # 2) cd to "matlabroot\extern\engines\python
@@ -33,12 +33,17 @@ def helloworld():
 def get_score(website):
     # put code for capture site here
     # website_screenshot = #get site sc here and load it into matlab
+
+    ss = get_screenshot(website)
+    ss_array = string_to_image(ss)
     html_score = get_html_score(website)
     # image_score = get_image_score()
     html_score_dict = {
         "prob_ok":str(html_score[0][0]),
         "prob_phish":str(html_score[0][1])
     }
+    print(ss_array)
+
     return html_score_dict
 
 
