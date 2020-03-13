@@ -31,7 +31,7 @@ def get_screenshot(url):
     chrome_options.add_argument('--window-size=1420,1080')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-gpu')
-    driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=os.path.join(os.path.dirname(__file__),'chromedriver'))
+    driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=os.path.join(os.path.dirname(__file__),'chromedriver_win.exe'))
 
     driver.set_page_load_timeout(10)
     driver.get(url)
