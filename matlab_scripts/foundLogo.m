@@ -11,8 +11,8 @@ function [score] = foundLogo(logo, siteSnap)
     [features_logo, valid_points_logo] = extractFeatures(logoWide, points_logo);
     [features_site, valid_points_site] = extractFeatures(site, points_site);
 
-    indexPairs = matchFeatures(features_logo, features_site, 'MaxRatio', .9);
+    indexPairs = matchFeatures(features_logo, features_site);
 
-    matchedPoints1 = valid_points_logo(indexPairs(:,1),:);
-    matchedPoints2 = valid_points_site(indexPairs(:,2),:);
-    score = (size(indexPairs, 1) / 50) * 100;
+    %matchedPoints1 = valid_points_logo(indexPairs(:,1),:);
+    %matchedPoints2 = valid_points_site(indexPairs(:,2),:);
+    score = (size(indexPairs, 1) / 45);

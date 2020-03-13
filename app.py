@@ -7,6 +7,10 @@ from html_and_url.classifier import get_html_url_score
 from screenshot import get_screenshot, string_to_image
 from flask_cors import CORS
 import cv2
+import os
+
+logo_saved = r'C:\Users\brian\Desktop\capstone research\paypal\boa_logo_wide.png'
+
 
 # You might want to install matlab engine for python
 # 1) install matlab
@@ -37,6 +41,9 @@ def test_matlab():
 def get_blur_score(website_path):
     return matlab_engine.getBlurScore(website_path, nargout=1)
 
+def get_found_score(website_path):
+    return matlab_engine.foundLogo(logo_saved, website_path, nargout=1)
+
 @app.route('/get_score/<website>')
 def get_score(website):
     # put code for capture site here
@@ -45,17 +52,26 @@ def get_score(website):
     ss = get_screenshot(website)
     ss_array = string_to_image(ss)
     html_score = get_html_score(website)
+
+    # save image for matlab
+    cv2.imwrite("imgs/screenshot.png", ss_array)
+
+    path_for_matlab = os.path.join(os.getcwd(), "imgs\screenshot.png")
+
+    blur_score = get_blur_score(path_for_matlab) # score for blur
+
+
+    found_score = get_found_score(path_for_matlab) # score for found logo
+
     # image_score = get_image_score()
-    html_score_dict = {
-        "prob_ok":str(html_score[0][0]),
-        "prob_phish":str(html_score[0][1])
+
+    return {
+        "prob_ok": str(html_score[0][0]),
+        "prob_phish": str(html_score[0][1]),
+        "blurriness": str(blur_score),
+        "prob_found_logo": str(found_score)
     }
 
-    cv2.imwrite("imgs/screenshot.png", ss_array)
-    print(ss_array)
-     # get iimage score
-
-    return html_score_dict
 
 
 def get_html_score(url):
