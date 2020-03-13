@@ -221,4 +221,4 @@ def generate_data_set(url):
 
     print(data_set)
 
-    return data_set
+    return data_set, whois_response, rank_checker_response

@@ -53,7 +53,7 @@ def run(classifier, name):
 
 def get_html_url_score(url):
     if len(url) > 1:
-            data_set = utils.generate_data_set(url)
+            data_set, whois_response, rank_checker_response = utils.generate_data_set(url)
 
             # Reshape the array
             data_set = np.array(data_set).reshape(1, -1)
@@ -68,7 +68,7 @@ def get_html_url_score(url):
 
             print(classifier.predict(data_set))
             print(classifier.predict_proba(data_set))   
-            return classifier.predict_proba(data_set)
+            return classifier.predict_proba(data_set), whois_response, rank_checker_response
 
 if __name__ == '__main__':
     '''

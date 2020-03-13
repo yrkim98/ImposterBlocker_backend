@@ -1,12 +1,12 @@
 from urllib.request import urlopen
-
 from flask import Flask, jsonify
-import matlab.engine
+# import matlab.engine
 from PIL import Image
 from html_and_url.classifier import get_html_url_score
 from screenshot import get_screenshot, string_to_image
 from flask_cors import CORS
 import cv2
+import re 
 
 # You might want to install matlab engine for python
 # 1) install matlab
@@ -15,9 +15,9 @@ import cv2
 
 
 # # Start matlab engine for communication with matlab scripts
-matlab_folder = r"C:\Users\brian\Desktop\flask-service\matlab_scripts"
-matlab_engine = matlab.engine.start_matlab()
-matlab_engine.cd(matlab_folder, nargout=0)
+# matlab_folder = r"C:\Users\brian\Desktop\flask-service\matlab_scripts"
+# matlab_engine = matlab.engine.start_matlab()
+# matlab_engine.cd(matlab_folder, nargout=0)
 
 # Start flask app
 app = Flask(__name__)
@@ -28,14 +28,8 @@ cors = CORS(app)
 def helloworld():
     return jsonify("Hello world")
 
-# test_matlab endpoint for testing communication with matlab
-@app.route("/test_matlab")
-def test_matlab():
-    response = matlab_engine.testmatlab()
-    return jsonify(response)
-
-def get_blur_score(website_path):
-    return matlab_engine.getBlurScore(website_path, nargout=1)
+# def get_blur_score(website_path):
+#     return matlab_engine.getBlurScore(website_path, nargout=1)
 
 @app.route('/get_score/<website>')
 def get_score(website):
@@ -44,18 +38,31 @@ def get_score(website):
 
     ss = get_screenshot(website)
     ss_array = string_to_image(ss)
-    html_score = get_html_score(website)
+    html_score, whois_response, rank_checker_response = get_html_score(website)
+    registration_date = re.findall(r'Registered On:</div><div class="df-value">([^<]+)</div>', whois_response.text)
+    registrar = re.findall(r'Registrar:</div><div class="df-value">([^<]+)</div>', whois_response.text)
+    update_date = re.findall(r'Updated On:</div><div class="df-value">([^<]+)</div>', whois_response.text)
+    state = re.findall(r'State:</div><div class="df-value">([^<]+)</div>', whois_response.text)
+    country = re.findall(r'Country:</div><div class="df-value">([^<]+)</div>', whois_response.text)
+
+    # print(re.findall(r"Global Rank: ([0-9]+)", rank_checker_response.text))
+    # print(whois_response.text)
     # image_score = get_image_score()
-    html_score_dict = {
+    final_score_dict = {
         "prob_ok":str(html_score[0][0]),
-        "prob_phish":str(html_score[0][1])
+        "prob_phish":str(html_score[0][1]),
+        "registrar":registrar,
+        "registered_on":registration_date,
+        "expiration_date":update_date,
+        "state":state,
+        "country":country
     }
 
     cv2.imwrite("imgs/screenshot.png", ss_array)
     print(ss_array)
      # get iimage score
 
-    return html_score_dict
+    return final_score_dict
 
 
 def get_html_score(url):
