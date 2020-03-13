@@ -1,0 +1,1 @@
+score = getBlurScore('C:\Users\brian\Desktop\capstone research\paypal\paypal_site.png')

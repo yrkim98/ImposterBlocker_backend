@@ -10,6 +10,7 @@ import re
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DRIVER_BIN = os.path.join(PROJECT_ROOT, "chromedriver")
 
+
 from webdriver_manager.chrome import ChromeDriverManager
 
 
