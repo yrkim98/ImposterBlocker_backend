@@ -5,7 +5,12 @@ import matlab.engine
 from PIL import Image
 from html_and_url.classifier import get_html_url_score
 from screenshot import get_screenshot, string_to_image
+<<<<<<< HEAD
 import numpy as np
+=======
+from flask_cors import CORS
+import cv2
+>>>>>>> 508dc821f00d772fc90cd538eda2839a4302195d
 
 # You might want to install matlab engine for python
 # 1) install matlab
@@ -20,6 +25,7 @@ matlab_engine.cd(matlab_folder, nargout=0)
 
 # Start flask app
 app = Flask(__name__)
+cors = CORS(app)
 
 # Hello world endpoint for testing
 @app.route("/helloworld")
@@ -48,8 +54,15 @@ def get_score(website):
         "prob_ok":str(html_score[0][0]),
         "prob_phish":str(html_score[0][1])
     }
+<<<<<<< HEAD
     score = get_blur_score("C:\\Users\\brian\\Desktop\\capstone research\\paypal\\paypal_site.png")
     print("score for blur: " + str(score))
+=======
+
+    cv2.imwrite("imgs/screenshot.png", ss_array)
+    print(ss_array)
+     # get iimage score
+>>>>>>> 508dc821f00d772fc90cd538eda2839a4302195d
 
     return html_score_dict
 
