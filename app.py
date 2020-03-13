@@ -47,6 +47,7 @@ def convert_to_matlab_image(image_url):
     return image_matlab
 
 @app.route('/get_blur_score')
+def get_blur_score(image):
 
 
 
