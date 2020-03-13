@@ -3,6 +3,9 @@ from flask import Flask, jsonify
 from PIL import Image
 from html_and_url.classifier import get_html_url_score
 from screenshot import get_screenshot, string_to_image
+from flask_cors import CORS
+import cv2
+
 # You might want to install matlab engine for python
 # 1) install matlab
 # 2) cd to "matlabroot\extern\engines\python
@@ -16,6 +19,7 @@ from screenshot import get_screenshot, string_to_image
 
 # Start flask app
 app = Flask(__name__)
+cors = CORS(app)
 
 # Hello world endpoint for testing
 @app.route("/helloworld")
@@ -42,7 +46,10 @@ def get_score(website):
         "prob_ok":str(html_score[0][0]),
         "prob_phish":str(html_score[0][1])
     }
+
+    cv2.imwrite("imgs/screenshot.png", ss_array)
     print(ss_array)
+     # get iimage score
 
     return html_score_dict
 
