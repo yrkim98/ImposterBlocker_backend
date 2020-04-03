@@ -6,14 +6,10 @@ import cv2
 import numpy as np
 import logging
 import re
+from webdriver_manager.chrome import ChromeDriverManager
  
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DRIVER_BIN = os.path.join(PROJECT_ROOT, "chromedriver")
-
-
-from webdriver_manager.chrome import ChromeDriverManager
-
-
 
 def get_screenshot(url):
     """
@@ -21,7 +17,6 @@ def get_screenshot(url):
     :return: .png screen shot
     """
     # driver = webdriver.Chrome(executable_path = DRIVER_BIN)
-
     # driver = webdriver.Remote("lucid_allen:4444/wd/hub", DesiredCapabilities.CHROME)
     if not re.match(r"^https?", url):
         url = "http://" + url
@@ -31,8 +26,10 @@ def get_screenshot(url):
     chrome_options.add_argument('--window-size=1420,1080')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-gpu')
-    driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=os.path.join(os.path.dirname(__file__),'chromedriver_win.exe'))
 
+    # implement this switch in a better way
+    # driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=os.path.join(os.path.dirname(__file__),'chromedriver_win.exe'))
+    driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=os.path.join(os.path.dirname(__file__),'chromedriver'))
     driver.set_page_load_timeout(10)
     driver.get(url)
     data = driver.get_screenshot_as_png()

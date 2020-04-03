@@ -1,1 +1,1 @@
-score = foundLogo('C:\Users\brian\Desktop\capstone research\paypal\boa_logo_wide.png', 'C:\Users\brian\Desktop\flask-service\imgs\screenshot.png')
+score = getBlurScore('/Users/sauravkharb/Desktop/ImposterBlocker_backend/imgs/screenshot.png')
