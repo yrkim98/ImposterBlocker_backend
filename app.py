@@ -9,8 +9,9 @@ import cv2
 import re 
 import os
 
-# logo_saved = r'C:\Users\brian\Desktop\capstone research\paypal\boa_logo_wide.png'
-logo_saved = os.path.join(os.path.dirname(__file__),'imgs/boa_logo_wide.png')
+#nomalize path for use on all machines
+logo_saved = os.path.normpath('imgs/boa_logo_wide.png')
+logo_saved = os.path.join(os.path.dirname(__file__), logo_saved)
 
 # Steps to install matlab engine for python
 # 1) install matlab
@@ -44,7 +45,7 @@ def get_score(website):
     # save image for matlab
     cv2.imwrite("imgs/screenshot.png", ss_array)
     # path_for_matlab = os.path.join(os.getcwd(), "imgs\screenshot.png")
-    path_for_matlab = os.path.join(os.getcwd(), "imgs/screenshot.png")
+    path_for_matlab = os.path.join(os.getcwd(), os.path.normpath("imgs/screenshot.png"))
     # get CV score
     blur_score = get_blur_score(path_for_matlab) # score for blur
     logo_score = get_logo_score(path_for_matlab) # score for logo found
