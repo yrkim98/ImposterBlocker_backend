@@ -33,7 +33,7 @@ cors = CORS(app)
 def get_score(website):
     # get screenshot of suspect website and convert to numpy array
     screenshot_binary_string = get_screenshot(website)
-    ss_array = string_to_image(screenshot_binary_string)
+    ss_array = string_to_image(screenshot_binary_string)    
     # get html score, whois response and google page rank
     html_score, whois_response, rank_checker_response = get_html_score(website)
     registration_date = re.findall(r'Registered On:</div><div class="df-value">([^<]+)</div>', whois_response.text)
@@ -60,7 +60,6 @@ def get_score(website):
         "blurriness": str(blur_score),
         "prob_found_logo": str(logo_score)
     }
-
     return final_score_dict
 
 # returns the html score
