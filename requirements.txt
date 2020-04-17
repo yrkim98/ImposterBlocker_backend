@@ -31,7 +31,6 @@ ipython==7.13.0
 lockfile==0.12.2
 mtrand==0.1
 mypy_extensions==0.4.3
-Numeric==24.2
 ordereddict==1.1
 pickle5==0.0.9
 Pillow==7.1.1
