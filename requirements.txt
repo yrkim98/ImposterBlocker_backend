@@ -35,16 +35,4 @@ ordereddict==1.1
 pickle5==0.0.9
 Pillow==7.1.1
 pretty==0.1
-PyQt4==4.11.4
-PyQt5==5.14.2
-PySide==1.2.4
-PySide2==5.14.2
-python-dotenv==0.13.0
 scikit_learn==0.22.2.post1
-shiboken==1.2.2
-shiboken2==5.14.2
-simplejson==3.17.0
-sip==5.2.0
-toml==0.10.0
-watchdog==0.10.2
-wincertstore==0.2
