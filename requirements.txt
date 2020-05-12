@@ -38,7 +38,6 @@ Pillow==7.1.1
 pretty==0.1
 protobuf==3.11.3
 pyOpenSSL==19.1.0
-PyQt4==4.11.4
 PyQt5==5.14.2
 PySide==1.2.4
 PySide2==5.14.2
