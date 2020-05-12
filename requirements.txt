@@ -39,7 +39,6 @@ pretty==0.1
 protobuf==3.11.3
 pyOpenSSL==19.1.0
 PyQt5==5.14.2
-PySide==1.2.4
 PySide2==5.14.2
 python-dotenv==0.13.0
 scikit_learn==0.22.2.post1
