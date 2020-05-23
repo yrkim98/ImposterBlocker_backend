@@ -15,7 +15,7 @@ We've created a detection algorithm that can accurately determine suspect phishi
 | ![enter image description here](https://i.imgur.com/LOBf6hf.jpg) <div>Saurav Kharb| <li>Product Design <li>Backend Dev.  | skharb@uw.edu
 ![Brian- ImposterBlocker](https://i.imgur.com/loWdGjv.png)<div>Brian Kim | <li>Computer Vision <li> Backend Dev.| yrkim98@uw.edu |
 ![Anushka- ImposterBlocker](https://i.imgur.com/YADRrmj.jpg)<div>Anushka Raheja | <li> UX Designer <li> Frontend Dev. | araheja@uw.edu
-<div>Pranita Mantravadi | <li> Product Manager <li> Frontend Dev. | pranitam@uw.edu
+![Pranita- ImposterBlocker](https://scontent-sea1-1.xx.fbcdn.net/v/t1.15752-0/p280x280/100853588_2959501020808294_5315593074766774272_n.jpg?_nc_cat=109&_nc_sid=b96e70&_nc_oc=AQkF_fofhAIWs6fq2i_pShy3nXqXdz1_dkxvXf3fdzU65owNRjNULqH38AR289DGUm0&_nc_ht=scontent-sea1-1.xx&_nc_tp=6&oh=0fa59178d6b53f5575b0785ba36088ca&oe=5EEF691D)<div>Pranita Mantravadi | <li> Product Manager <li> Frontend Dev. | pranitam@uw.edu
 
 
 <div>
