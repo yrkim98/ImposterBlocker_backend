@@ -3,7 +3,7 @@ keyring==18.0.0
 greenlet==0.4.15
 pathlib2==2.3.5
 kiwisolver==1.1.0
-Flask_Cors==3.0.8
+Flask_Cors==3.0.9
 pytest==5.2.1
 docutils==0.15.2
 tornado==6.0.3
